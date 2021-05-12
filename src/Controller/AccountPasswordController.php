@@ -22,24 +22,31 @@ class AccountPasswordController extends AbstractController
     #[Route('/compte/modifiermotdepasse', name: 'account_password')]
     public function index(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
+
+        $notification = null;
+
         $user = $this->getUser();
         $form = $this->createForm( ChangePasswordType::class, $user);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isvalid()) {
         $old_pwd = $form->get('old_password')->getData();    
-        if ($encoder->isPasswordValid($user, $old_pwd))
-        $new_password = $form->get('new_password')->getData();
-        $password = $encoder->encodePassword($user, $new_password);
+        
+        if ($encoder->isPasswordValid($user, $old_pwd));
+        $new_pwd = $form->get('new_password')->getData();
+        $password = $encoder->encodePassword($user, $new_pwd);
 
         $user->setPassword($password);
         $this->entityManager->persist($user);
         $this->entityManager->flush();
+        $notification = "Votre mot de passe a bien été modifié!";
+        }else{
+            $notification = "Votre mot de passe actuel est invalide";
         }
 
         return $this->render('account/password.html.twig', [
-        'form' => $form->createView()
-        
+        'form' => $form->createView(),
+        'notification' => $notification
         ]);
     }
 }
