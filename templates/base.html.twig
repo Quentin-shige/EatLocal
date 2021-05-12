@@ -1,23 +1,17 @@
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
-    <title>Projet</title>
-
-    <!-- Bootstrap core CSS -->
-    
-
-    
-    <header>
-    {% if app.user %}
-
-    <a href=""{{ path('account') }}"">Mon compte</a> | <a href=""{{ path('app_logout') }}"">Déconnexion</a>
-    {% else %}
-        
-    <a href=""{{ path('app_login') }}"">Connexion</a> | <a href=""{{ path('register') }}"">Inscription</a>
-    {% endif %}
-    </header>
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- ... -->
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome to Eat Local! {% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </body>
 </html>
