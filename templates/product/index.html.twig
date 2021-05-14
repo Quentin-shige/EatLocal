@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos produits - EatLocal{% endblock %}
+
+{% block body %}
+   <h1>Nos produits</h1>
+
+    <div class="row">
+        {% for product in products %}
+            <div class="col-md-4">
+            <div class="card-product">
+            <img src="/uploads/{{product.illustration}}" alt="{{ product.name}}" class="img-fluid">
+            <h4>{{product.name}}</h4>
+            <p>{{product.description}}</p>
+            <p>{{product.price}}</p>
+            </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
