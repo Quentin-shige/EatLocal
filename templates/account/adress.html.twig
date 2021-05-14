@@ -1,0 +1,16 @@
+{% block content %}
+
+<h1>Mes adresses</h1>
+
+<a href="{{ path('account')}}">Retour</a>
+<a href="{{ path('account_adress_add')}}" class="btn-info btn-sm">Ajouter une adresse</a>
+
+{% if app.user.adresses|length == 0 %}
+Aucune adresse n'a été trouvée, pour en ajouter une, <a href="{{ path('account_adress_add')}}">cliquez ici</a>.
+{% else %}
+{% for adress in app.user.adresses %}
+<a>{{adress.name}}|{{ adress.adress}},</a>
+<a href="{{ path('account_adress_edit', { 'id' : adress.id}) }}" class="btn btn-primary">Modifier</a>|<a href="{{ path('account_adress_delete', { 'id' : adress.id}) }}">Supprimer</a>
+{% endfor %}
+{% endif %}
+{% endblock %}

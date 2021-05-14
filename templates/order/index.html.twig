@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma commande!{% endblock %}
+
+{% block body %}
+<h1>Passer ma commande<h1>
+<p>Choisissez vos préférences</p>
+<p>Choisissez votre adresse de livraison</p>
+{% set formHtml %}
+{{form_start(form, {action:path('order_recap')})}}
+{{form_end(form)}}
+{% endset %}
+
+{{ formHtml|replace({'[br]' : '<br/>'})|raw }}
+<p>Récapitulatif de ma commande</p>
+{% for products in cart %}
+    
+    x {{product.quantity}}
+{% endfor %}
+<p>Bouton paiement</p>
+
+
+
+{% endblock %}
