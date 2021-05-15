@@ -38,7 +38,7 @@ class OrderController extends AbstractController
             'cart' => $cart->getFull()
         ]);
     }
-    #[Route('/commande/recap', name: 'order_recap', methods:"POST" )]
+    #[Route('/commande/recap', name: 'order_recap', methods:['POST' ])]
     public function add(Cart $cart, Request $request): Response
     {
         

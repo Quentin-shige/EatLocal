@@ -2,10 +2,18 @@
 
 {% block title %}Nos produits - EatLocal{% endblock %}
 
-{% block body %}
+{% block content %}
    <h1>Nos produits</h1>
+<div class="row">
+    <div class="col-md-3">
+    <h1>Filtrer</h1>
+{{ form(form) }}
 
-    <div class="row">
+
+    </div>
+    <div class="col-md-9">
+    <h1>Nos produits</h1>
+    <div class="row product-container">
         {% for product in products %}
             <div class="col-md-4">
             <div class="card-product text-center">
@@ -20,4 +28,8 @@
             </div>
         {% endfor %}
     </div>
+    </div>
+    </div>
+
+    
 {% endblock %}
