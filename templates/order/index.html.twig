@@ -8,17 +8,19 @@
 <p>Choisissez votre adresse de livraison</p>
 {% set formHtml %}
 {{form_start(form, {action:path('order_recap')})}}
+{{ form_label(form.adresses, 'Choisir l\'adresse de livraison')}}
+<a href="{{ path('account_adress_add')}}">Ajouter une nouvelle adresse</a>
 {{form_end(form)}}
 {% endset %}
 
 {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
 <p>Récapitulatif de ma commande</p>
 {% for products in cart %}
-    
+    {{ product.product.name }}
+    {{ product.product.subtitle }}
     x {{product.quantity}}
 {% endfor %}
 <p>Bouton paiement</p>
-
 
 
 {% endblock %}

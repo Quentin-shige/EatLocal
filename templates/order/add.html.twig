@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement{% endblock %}
+
+{% block body %}
+<h1>Récapitulatif de la commande!<h1>
+<p>Vérifiez votre panier et vos informations avant de finaliser votre commande</p>
+
+<p>Mon adresse de livraison</p>
+{{ delivery }}
+
+<p>Mon transporteur</p>
+{{ carrier.name }}
+{{ carrier.description }}
+{{ carrier.price|number_format(2,',',',') }} € 
+
+{{ formHtml|replace({'[br]' : '<br/>'})|raw }}
+<p>Récapitulatif de ma commande</p>
+{% for products in cart %}
+    {{ product.product.name }}
+    {{ product.product.subtitle }}
+    x {{product.quantity}}
+{% endfor %}
+
+{{ ((product.product.price * product.quantity) / 100)|number_format(2,',',',') }} €<br/>
+Sous-total: {{ ((total) / 100)|number_format(2,',',',') }} €<br/>
+Livraison:{{ ((carrier.price) / 100)|number_format(2,',',',') }} €<br/>
+Total:{{ ((total) / 100) + (carrier.price)|number_format(2,',',',') }} €
+
+
+
+<a href="" class="btn btn-success">Payer {{ ((total) / 100) + (carrier.price)|number_format(2,',',',') }} €</a>
+
+
+
+{% endblock %}
