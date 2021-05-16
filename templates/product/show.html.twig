@@ -16,7 +16,7 @@
             <span>{{ (product.price /100)|number_format(2, ',', '.')}} €</span>
             <hr>
             </div>
-            <a href="#" class="btn btn-primary"> Ajouter au panier</a>
+            <a href="{{ apth('add_to_cart', {'id : product.id'})}}" class="btn btn-primary"> Ajouter au panier</a>
             </div>
         </div>
 {% endblock %}
