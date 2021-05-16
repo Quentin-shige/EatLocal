@@ -1,5 +1,5 @@
 <?php
-namespace App\classes;
+namespace App\Classe;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 

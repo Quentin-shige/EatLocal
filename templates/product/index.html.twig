@@ -3,33 +3,28 @@
 {% block title %}Nos produits - EatLocal{% endblock %}
 
 {% block content %}
-   <h1>Nos produits</h1>
-<div class="row">
-    <div class="col-md-3">
-    <h1>Filtrer</h1>
-{{ form(form) }}
-
-
-    </div>
-    <div class="col-md-9">
-    <h1>Nos produits</h1>
-    <div class="row product-container">
-        {% for product in products %}
-            <div class="col-md-4">
-            <div class="card-product text-center">
-            <a href="{{path('product', { 'slug' : product.slug })}}">
-            <img src="/uploads/{{product.illustration}}" alt="{{ product.name}}" class="img-fluid">
-            </a>
-            <h4>{{product.name}}</h4>
-            <p>{{product.description}}</p>
-            <span>{{ (product.price /100)|number_format(2, ',', '.')}} €</span>
+    <div class="row">
+        <div class="col-md-3">
+            <h1>Filtrer</h1>
+            {{ form(form) }}
+        </div>
+        <h1>Nos produits</h1>
+        <div class="col-md-9">
+            <div class="row product-container">
+                {% for product in products %}
+                <div class="col-md-4">
+                <div class="card-product text-center">
+                    <a href="{{path('product', { 'slug' : product.slug })}}">
+                    <img src="/uploads/{{product.illustration}}" alt="{{ product.name}}" class="img-fluid">
+                    </a>
+                    <h4>{{product.name}}</h4>
+                    <p>{{product.description}}</p>
+                    <span>{{ (product.price /100)|number_format(2, ',', '.')}} €</span>
+                </div>
+                    <a href="#" class="btn btn-primary"> Ajouter au panier</a>
+                </div>
+                {% endfor %}
             </div>
-            <a href="#" class="btn btn-primary"> Ajouter au panier</a>
-            </div>
-        {% endfor %}
-    </div>
-    </div>
-    </div>
-
-    
+        </div>
+    </div>  
 {% endblock %}

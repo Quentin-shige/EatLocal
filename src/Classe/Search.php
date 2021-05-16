@@ -1,20 +1,20 @@
 <?php
 
-namespace App\classes;
+namespace App\Classe;
 
 use App\Entity\Category;
 
-class search
+class Search
 
 {
     /**
-     * *@var string
+     * @var string
      */
 
     public $string = '';
 
     /**
-     * *@var Category[]
+     * @var Category[]
      */
 
     public $categories = [];
