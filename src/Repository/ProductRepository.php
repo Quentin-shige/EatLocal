@@ -6,7 +6,6 @@ use App\Classe\Search;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @method Product|null find($id, $lockMode = null, $lockVersion = null)
@@ -25,7 +24,7 @@ class ProductRepository extends ServiceEntityRepository
      * Système de recherche de produits
      * @return Product[]
      */
-    public function findWithSearch(Search $search): Response
+    public function findWithSearch(Search $search)
     {
         $query = $this
             ->createQueryBuilder('p')
@@ -44,6 +43,7 @@ class ProductRepository extends ServiceEntityRepository
                 ->setParameter('string', "%{$search->string}%");
         }
 
+        dump('find search bar');
         return $query->getQuery()->getResult();
     }
 
