@@ -15,9 +15,9 @@
 
 {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
 <p>Récapitulatif de ma commande</p>
-{% for products in cart %}
-    {{ product.product.name }}
-    {{ product.product.subtitle }}
+<img src="/uploads/{{product.product.illustration}}" alt="{{product.product.name}}">
+{% for key,product in cart %}
+    {{product.product.name}}
     x {{product.quantity}}
 {% endfor %}
 <p>Bouton paiement</p>

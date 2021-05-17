@@ -170,6 +170,7 @@ class Order
     {
         return $this->isPaid;
     }
+    
 
     public function setIsPaid(bool $isPaid): self
     {

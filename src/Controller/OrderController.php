@@ -25,7 +25,7 @@ class OrderController extends AbstractController
     }
 
     #[Route('/commande', name: 'order')]
-    public function index(Cart $cart, Request $request): Response
+    public function index(cart $cart, Request $request): Response
     {
         if (!$this->getUser()->getAdresses()->getValues())
         {
@@ -62,7 +62,7 @@ class OrderController extends AbstractController
             }
             $delivery_content = $delivery->getAdress();
             $delivery_content = $delivery->getPostal().' '.$delivery->getCity();
-            $delivery_content = $delivery->getCountry();
+            
             
             //Enregistrer la commande
             $order = new Order();

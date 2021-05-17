@@ -1,20 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartController!{% endblock %}
+{% block title %}Mon panier{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% if cart|length > 0 %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<h1>Mon panier</h1>
+{% set total = null %}
+{% for product in cart %}
+<img src="/uploads/{{product.product.illustration}}" alt="{{ product.product.name }}">
+{{product.product.name}}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/symfony/projetWF3/src/Controller/CartController.php'|file_link(0) }}">src/Controller/CartController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/symfony/projetWF3/templates/cart/index.html.twig'|file_link(0) }}">templates/cart/index.html.twig</a></code></li>
-    </ul>
-</div>
+
+
+<a href="{{ path('decrease_to_cart', { 'id' : product.product.id }) }}">
+<img src="{{ asset('assets/img/collapse.png') }}" height="12px" alt="Retirer une quantité à mon produit">
+x {{ product.quantity }}
+
+<a href="{{ path('add_to_cart', {'id' : product.product.id})}}">
+<img src="{{ asset('assets/img/add.png')}}" height="12px" alt="Ajouter un produit">
+{% set total = total + (product.product.price * product.quantity)%}
+{{ (product.product.price / 100)|number_format(2,',','.')}} €
+{{((product.product.price * product.quantity)/ 100)|number_format(2,',','.')}}€
+
+<a href="{{ path('delete_to_cart', { 'id' : product.product.id }) }}">
+                        <img src="{{ asset('assets/img/remove.png') }}" height="18px" alt="Supprimer mon produit">
+
+Nombre de produits: {{ cart|length }}
+Total de mon panier:
+
+{% set total = total + (product.product.price * product.quantity) %}
+{% endfor %}
+Nombre de produits : {{ cart|length }}
+Total de mon panier : {{ (total / 100)|number_format(2, ',', '.') }} €
+
+<a href="{{ path('order')}}" class="btn btn-success btn-block">Valider mon panier</a>
+{% else %}
+Votre panier est vide!
+{% endif %}
 {% endblock %}

@@ -14,18 +14,17 @@
 {{ carrier.description }}
 {{ carrier.price|number_format(2,',',',') }} € 
 
-{{ formHtml|replace({'[br]' : '<br/>'})|raw }}
 <p>Récapitulatif de ma commande</p>
-{% for products in cart %}
+{#{% for products in cart %}
     {{ product.product.name }}
     {{ product.product.subtitle }}
     x {{product.quantity}}
-{% endfor %}
+{% endfor %}"}
 
 {{ ((product.product.price * product.quantity) / 100)|number_format(2,',',',') }} €<br/>
 Sous-total: {{ ((total) / 100)|number_format(2,',',',') }} €<br/>
 Livraison:{{ ((carrier.price) / 100)|number_format(2,',',',') }} €<br/>
-Total:{{ ((total) / 100) + (carrier.price)|number_format(2,',',',') }} €
+Total:{{ ((total) / 100) + (carrier.price)|number_format(2,',',',') }} €#}
 
 
 

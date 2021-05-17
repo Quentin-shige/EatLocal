@@ -14,7 +14,10 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+        <a href="{{ path('cart')}}">
+        <img src="{{ asset('assets/img/shpping-cart.png')}}" class="cart-icon" alt="Mon panier">
+        {% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}

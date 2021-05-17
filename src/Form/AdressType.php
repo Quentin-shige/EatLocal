@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\Adress;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -37,9 +36,7 @@ class AdressType extends AbstractType
             ->add('city',TelType::class, [ 'label' => 'Ville', 'attr' => [
                 'placeholder' => 'Ville',
             ]])
-            ->add('country',CountryType::class, [ 'label' => 'Pays', 'attr' => [
-                'placeholder' => 'Pays',
-            ]])
+            
             ->add('phone',TextType::class, [ 'label' => 'Numéro de téléphone', 'attr' => [
                 'placeholder' => 'Numéro de téléphone',
             ]])
