@@ -20,8 +20,9 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">{{product.name}}</h5>
-                            <p class="card-text">{{product.description}}</p>
+                            <p class="card-text">{{product.description|u.truncate(120, '...')}}</p>
                             <span>{{ (product.price /100)|number_format(2, ',', '.')}} €</span>
+                        <a href="{{path('product', { 'slug' : product.slug })}}" class="btn btn-info"> Voir le produit</a>
                         <a href="#" class="btn btn-primary"> Ajouter au panier</a>
                         </div>
                     </div>
