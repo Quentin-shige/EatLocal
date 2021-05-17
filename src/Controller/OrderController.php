@@ -12,7 +12,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Stripe\Stripe;
 
 
 class OrderController extends AbstractController
@@ -40,7 +39,7 @@ class OrderController extends AbstractController
             'cart' => $cart->getFull()
         ]);
     }
-    #[Route('/commande/recap', name: 'order_recap', methods:['POST'])]
+    #[Route('/commande/recap', name: 'order_recap')]
     public function add(Cart $cart, Request $request): Response
     {
         
@@ -78,6 +77,7 @@ class OrderController extends AbstractController
             //Enregistrer les produits
             
             $product_for_stripe = [];
+            $YOUR_DOMAIN = 'https://127.0.0.1:8000';
 
             foreach ($cart->getFull() as $product){
             $orderDetails = new OrderDetails();
@@ -85,46 +85,47 @@ class OrderController extends AbstractController
             $orderDetails->setProduct($product['product']->getName());
             $orderDetails->setQuantity($product ['quantity']);
             $orderDetails->setPrice($product['product']->getPrice());
-            $orderDetails->setTotal($product['product']->getPrice() * ($product ['quantity']));
+            $orderDetails->setTotal($product['product']->getPrice() * ($product['quantity']));
 
-            // $product_for_stripe[] = [
-            //     'price_data' => [
-            //     'currency' => 'eur',
-            //     'unit_amount' => $product['product']->getPrice(),
-            //     'product_data' => [
-            //             'name' => $product['product']->getName(),
-            //             'images' => [$YOUR_DOMAIN."uploads/".$product['product']->getIllustration()],
-            //         ],
-            //     ],
-            //     'quantity' => $product ['quantity'],
-            // ];
+            // Faire payement Stripe
+            $product_for_stripe[] = [
+                'price_data' => [
+                'currency' => 'eur',
+                'unit_amount' => $product['product']->getPrice(),
+                'product_data' => [
+                        'name' => $product['product']->getName(),
+                        'images' => [$YOUR_DOMAIN."uploads/".$product['product']->getIllustration()],
+                    ],
+                ],
+                'quantity' => $product['quantity'],
+            ];
             }
 
-            $this->entityManager->flush();
+            // $this->entityManager->flush();
 
-                // Stripe::setApiKey('sk_test_51IrmcmGC4UGSFjC3tYFF279rq7o2qk81u3WX3Xr4mQKhqmDRODBn8oX9h9G6vMxeosZYyJXSfy1hfd5YLVLQbZ8d00svljIqTF');
-                // $YOUR_DOMAIN = 'https://127.0.0.1:8000';
-                // $checkout_session = Session::create([
-                // 'payment_method_types' => ['card'],
-                // 'line_items' => [[
-                //     'price_data' => [
-                //     'currency' => 'usd',
-                //     'unit_amount' => 2000,
-                //     'product_data' => [
-                //         'name' => 'Stubborn Attachments',
-                //         'images' => [$YOUR_DOMAIN."uploads/".$product->getIllustration()],
-                //     ],
-                //     ],
-                //     'quantity' => 1,
-                // ]],
-                // 'mode' => 'payment',
-                // 'success_url' => $YOUR_DOMAIN . '/success.html',
-                // 'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
-                // ]);
-                // echo json_encode(['id' => $checkout_session->id]);
+            \Stripe\Stripe::setApiKey('sk_test_51IrmcmGC4UGSFjC3tYFF279rq7o2qk81u3WX3Xr4mQKhqmDRODBn8oX9h9G6vMxeosZYyJXSfy1hfd5YLVLQbZ8d00svljIqTF');
+            header('Content-Type: application/json');
+           
+            $checkout_session = \Stripe\Checkout\Session::create([
+              'payment_method_types' => ['card'],
+              'line_items' => [[
+                'price_data' => [
+                  'currency' => 'usd',
+                  'unit_amount' => 2000,
+                  'product_data' => [
+                    'name' => 'Stubborn Attachments',
+                    'images' => ["https://i.imgur.com/EHyR2nP.png"],
+                  ],
+                ],
+                'quantity' => 1,
+              ]],
+              'mode' => 'payment',
+              'success_url' => $YOUR_DOMAIN . '/success.html',
+              'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
+            ]);
                 
-                // dump($checkout_session->id);
-                // dd($checkout_session);
+                dump($checkout_session->id);
+                dd($checkout_session);
 
             return $this->render('order/add.html.twig', [
                 'cart' => $cart->getFull(),
