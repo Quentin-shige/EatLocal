@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ma commande!{% endblock %}
+{% block title %}Ma commande{% endblock %}
 
 {% block body %}
 <h1>Passer ma commande<h1>
-<p>Choisissez vos préférences</p>
-<p>Choisissez votre adresse de livraison</p>
+    <p>Choisissez vos préférences</p>
+    <p>Choisissez votre adresse de livraison</p>
 {% set formHtml %}
 {{form_start(form, {action:path('order_recap')})}}
 {{ form_label(form.adresses, 'Choisir l\'adresse de livraison')}}

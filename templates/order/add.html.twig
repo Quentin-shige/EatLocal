@@ -3,33 +3,47 @@
 {% block title %}Paiement{% endblock %}
 
 {% block body %}
-<h1>Récapitulatif de la commande!<h1>
-<p>Vérifiez votre panier et vos informations avant de finaliser votre commande</p>
+<h1>Récapitulatif de la commande<h1>
+<h4>Vérifiez votre panier et vos informations avant de finaliser votre commande</h4>
+<hr>
+<div class="row">
+    <div class="col-md-6">
+        <h4>Mon adresse de livraison</h4>
+       <h5>{{ delivery }}</h5>
+        <h4>Mon transporteur</h4>
+        <h5>{{ carrier.name }}</h5>
+        <h7>{{ carrier.description }}</h7>
+         <h4>Prix de la livraison</h4>
+        <h5>{{ carrier.price|number_format(2,',','.') }} € </h5>
+    </div>
+    <div class="col-md-6">
+        <div class="text-center">
+            <h4>Récapitulatif de ma commande</h4>
+            <h6>Voici le récapitulatif de votre commande en cours..</h6>
+            <h4>Total</h4>
+            <h5>Trouver la formule pour calculer le total</h5>
+        </div>
+    </div>
+    <div>
+    {% for key,product in cart %}
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="/uploads/{{product.product.illustration}}" alt="{{ product.product.name}}" class="img-fluid">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{product.product.name}}</h5>
+                            <h5> x {{product.quantity}}</h5>
+                            <span>{{ (product.product.price  * product.quantity /100)|number_format(2, ',', '.')}} €</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 
-<p>Mon adresse de livraison</p>
-{{ delivery }}
-
-<p>Mon transporteur</p>
-{{ carrier.name }}
-{{ carrier.description }}
-{{ carrier.price|number_format(2,',',',') }} € 
-
-<p>Récapitulatif de ma commande</p>
-{#{% for products in cart %}
-    {{ product.product.name }}
-    {{ product.product.subtitle }}
-    x {{product.quantity}}
-{% endfor %}"}
-
-{{ ((product.product.price * product.quantity) / 100)|number_format(2,',',',') }} €<br/>
-Sous-total: {{ ((total) / 100)|number_format(2,',',',') }} €<br/>
-Livraison:{{ ((carrier.price) / 100)|number_format(2,',',',') }} €<br/>
-Total:{{ ((total) / 100) + (carrier.price)|number_format(2,',',',') }} €#}
-
-
-
-<a href="" class="btn btn-success">Payer {{ ((total) / 100) + (carrier.price)|number_format(2,',',',') }} €</a>
-
-
+{# <a href="" class="btn btn-success">Payer {{ ([total / 100] + carrier.price)|number_format(2,',','.') }} €</a> #}
 
 {% endblock %}

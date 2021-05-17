@@ -77,7 +77,7 @@ class OrderController extends AbstractController
             //Enregistrer les produits
             
             $product_for_stripe = [];
-            $YOUR_DOMAIN = 'https://127.0.0.1:8000';
+            $YOUR_DOMAIN = 'https://127.0.0.1:8000/commande/recap';
 
             foreach ($cart->getFull() as $product){
             $orderDetails = new OrderDetails();
@@ -108,29 +108,20 @@ class OrderController extends AbstractController
            
             $checkout_session = \Stripe\Checkout\Session::create([
               'payment_method_types' => ['card'],
-              'line_items' => [[
-                'price_data' => [
-                  'currency' => 'usd',
-                  'unit_amount' => 2000,
-                  'product_data' => [
-                    'name' => 'Stubborn Attachments',
-                    'images' => ["https://i.imgur.com/EHyR2nP.png"],
-                  ],
+              'line_items' => [
+                $product_for_stripe
                 ],
-                'quantity' => 1,
-              ]],
               'mode' => 'payment',
               'success_url' => $YOUR_DOMAIN . '/success.html',
               'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
             ]);
-                
-                dump($checkout_session->id);
-                dd($checkout_session);
+            
 
             return $this->render('order/add.html.twig', [
                 'cart' => $cart->getFull(),
                 'carrier' =>$carriers,
-                'delivery' => $delivery_content
+                'delivery' => $delivery_content,
+                'stripe_checkout_session' => $checkout_session->id
             ]);
             }
             return $this->RedirectToRoute('cart');
