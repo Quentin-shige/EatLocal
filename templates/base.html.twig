@@ -17,6 +17,15 @@
         {% block body %}
         <a href="{{ path('cart')}}">
         <img src="{{ asset('assets/img/shpping-cart.png')}}" class="cart-icon" alt="Mon panier">
+            <h3>Découvrez nos produitsles plus vendus !</h3>
+            {% for product in products %}
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        {% include 'product/single_product.html.twig' %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div> 
         {% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}

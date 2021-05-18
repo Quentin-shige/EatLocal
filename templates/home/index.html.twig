@@ -1,3 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block carousel %}{% endblock %}
+{% block content %}
+<div class="row">
+    {% for product in products %}
+        <div class="col-md-4">
+            {% include 'product/single_product.html.twig' %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
