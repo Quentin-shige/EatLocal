@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block javascript %}
-    <script scrc="https://js.stripe.com/v3/"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 {% endblock %}
 {% block title %}Paiement{% endblock %}
 
@@ -50,12 +51,13 @@
 <a id ="checkout-button" class="btn btn-success">Payer €</a>
 {% endblock %}
 {% block script %}
- <script type="text/javascript">
+ <script>
+    {# $(function() { #}
     // Create an instance of the Stripe object with your publishable API key
     var stripe = Stripe("pk_test_51IrmcmGC4UGSFjC3LVSKQHN61yyHKj5cuwQqRtBjrV8Sj3PEjYtDwBGjH1pBGo8Xs1DkpZZIqRwqyDqyn1ybYiWH00gxJE5CmA");
     var checkoutButton = document.getElementById("checkout-button");
     checkoutButton.addEventListener("click", function () {
-        fetch("/commande/create-session.php", {
+        fetch("/commande/create-session", {
             method: "POST",
         })
         .then(function (response) {
@@ -76,5 +78,6 @@
           console.error("Error:", error);
         });
     });
-  </script>
+{# }); #}
+ </script>
 {% endblock %}
