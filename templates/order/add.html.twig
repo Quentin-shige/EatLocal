@@ -44,7 +44,7 @@
             </div>
             {% set total = total + (product.product.price * product.quantity) %}
     {% endfor %}
-        Total de mon panier : {{ (total / 100)|number_format(2, ',', '.') }} €
+        Sous-Total : {{ (total / 100)|number_format(2, ',', '.') }} €
         Total avec livraison : {{ (total / 100 + carrier.price)|number_format(2,',','.') }} €
     </div>
 </div>
@@ -52,19 +52,23 @@
 {% endblock %}
 {% block script %}
  <script>
-    {# $(function() { #}
     // Create an instance of the Stripe object with your publishable API key
     var stripe = Stripe("pk_test_51IrmcmGC4UGSFjC3LVSKQHN61yyHKj5cuwQqRtBjrV8Sj3PEjYtDwBGjH1pBGo8Xs1DkpZZIqRwqyDqyn1ybYiWH00gxJE5CmA");
     var checkoutButton = document.getElementById("checkout-button");
     checkoutButton.addEventListener("click", function () {
-        fetch("/commande/create-session", {
+        fetch("/commande/create-session/{{ reference }}", {
             method: "POST",
         })
         .then(function (response) {
           return response.json();
         })
         .then(function (session) {
-          return stripe.redirectToCheckout({ sessionId: session.id });
+            if (session.error == 'order') {
+            //redirect to reseignements
+                window.location.replace('{{ path("order")}}');
+            } else {
+                 return stripe.redirectToCheckout({ sessionId: session.id });
+            }
         })
         .then(function (result) {
           // If redirectToCheckout fails due to a browser or network
@@ -78,6 +82,5 @@
           console.error("Error:", error);
         });
     });
-{# }); #}
  </script>
 {% endblock %}

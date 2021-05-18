@@ -40,14 +40,11 @@ class OrderController extends AbstractController
     }
     #[Route('/commande/recap', name: 'order_recap')]
     public function add(Cart $cart, Request $request): Response
-    {
-        
+    { 
         $form = $this->createForm(OrderType::class, null, [
             'user' => $this->getUser()
         ]);
-
             $form->handleRequest($request);
-
             if($form->isSubmitted() && $form->isValid()){
             $date = new DateTime();
             $carriers = $form->get('carriers')->getData();
@@ -61,15 +58,17 @@ class OrderController extends AbstractController
             $delivery_content = $delivery->getAdress();
             $delivery_content = $delivery->getPostal().' '.$delivery->getCity();
             
-            
             //Enregistrer la commande
             $order = new Order();
+            $reference = $date->format('dmY').'-'.uniqid();
+            $order->setReference($reference);
             $order->setUser($this->getUser());
             $order->setCreatedAt($date);
             $order->setCarrierName($carriers->getName());
             $order->setCarrierPrice($carriers->getPrice());
             $order->setDelivery($delivery_content);
             $order->setIsPaid(0);
+            $order->setState(1);
 
             $this->entityManager->persist($order);
 
@@ -84,12 +83,13 @@ class OrderController extends AbstractController
             $orderDetails->setTotal($product['product']->getPrice() * ($product['quantity']));
             }
 
-            // $this->entityManager->flush();
+            $this->entityManager->flush();
             
             return $this->render('order/add.html.twig', [
                 'cart' => $cart->getFull(),
-                'carrier' =>$carriers,
-                'delivery' => $delivery_content
+                'carrier' => $carriers,
+                'delivery' => $delivery_content,
+                'reference'=> $order->getReference()
             ]);
             }
             return $this->RedirectToRoute('cart');
