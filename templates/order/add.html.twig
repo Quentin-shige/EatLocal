@@ -25,6 +25,7 @@
         </div>
     </div>
     <div>
+    {% set total = null %}
     {% for key,product in cart %}
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
@@ -40,7 +41,9 @@
                     </div>
                 </div>
             </div>
+            {% set total = total + (product.product.price * product.quantity) %}
         {% endfor %}
+         Total de mon panier : {{ (total / 100)|number_format(2, ',', '.') }} €
     </div>
 </div>
 {# <a href="" class="btn btn-success">Payer {{ ([total / 100] + carrier.price)|number_format(2,',','.') }} €</a> #}
