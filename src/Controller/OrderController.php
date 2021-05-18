@@ -69,7 +69,6 @@ class OrderController extends AbstractController
             $order->setDelivery($delivery_content);
             $order->setState(1);
 
-
             $this->entityManager->persist($order);
 
             //Enregistrer les produits
@@ -81,6 +80,7 @@ class OrderController extends AbstractController
             $orderDetails->setQuantity($product ['quantity']);
             $orderDetails->setPrice($product['product']->getPrice());
             $orderDetails->setTotal($product['product']->getPrice() * ($product['quantity']));
+            $this->entityManager->persist($orderDetails);
             }
 
             $this->entityManager->flush();

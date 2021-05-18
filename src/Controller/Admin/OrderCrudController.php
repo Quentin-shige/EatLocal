@@ -6,6 +6,7 @@ use App\Entity\Order;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
@@ -17,6 +18,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class OrderCrudController extends AbstractCrudController
 {
@@ -39,6 +41,11 @@ class OrderCrudController extends AbstractCrudController
         ->add('detail', $updatePreparation)
         ->add('detail', $updateDelivery)
         ->add('index', 'detail');
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud->setDefaultSort(['id' => 'DESC']);
     }
 
     public function updatePreparation(AdminContext $context)
@@ -80,6 +87,7 @@ class OrderCrudController extends AbstractCrudController
             MoneyField::new('total', 'Total produit')->setCurrency('EUR'),
             TextField::new('carrierName', 'Transporteur'),
             MoneyField::new('carrierPrice', 'Frais de port')->setCurrency('EUR'),
+            BooleanField::new('isPaid', 'Payée'),
             ChoiceField::new('state')->setChoices([
                 'Non payée' => 0,
                 'Payée' => 1,

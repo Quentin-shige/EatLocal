@@ -45,7 +45,7 @@
             {% set total = total + (product.product.price * product.quantity) %}
     {% endfor %}
         Sous-Total : {{ (total / 100)|number_format(2, ',', '.') }} €
-        Total avec livraison : {{ (total / 100 + carrier.price)|number_format(2,',','.') }} €
+        Total avec livraison : {{ (total / 100 + (carrier.price / 100))|number_format(2,',','.') }} €
     </div>
 </div>
 <a id ="checkout-button" class="btn btn-success">Payer €</a>
