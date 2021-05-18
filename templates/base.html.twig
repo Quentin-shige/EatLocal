@@ -9,6 +9,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {# <link rel="icon" type="image/png" href="./assets/img/fav_icon.png" /> #}
         <title>{% block title %}Eat Local - Buy Local {% endblock %}</title>
+
+        {# block JS pour Stripe si besoin dans add.html.twig #}
+        {% block javascript %}
+        {% endblock %}
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -22,3 +27,6 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </body>
+    {% block script %}
+    {% endblock %}
+</html>
