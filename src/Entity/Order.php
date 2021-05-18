@@ -56,6 +56,11 @@ class Order
      */
     private $isPaid;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $state;
+
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
@@ -175,6 +180,18 @@ class Order
     public function setIsPaid(bool $isPaid): self
     {
         $this->isPaid = $isPaid;
+
+        return $this;
+    }
+
+    public function getState(): ?int
+    {
+        return $this->state;
+    }
+
+    public function setState(int $state): self
+    {
+        $this->state = $state;
 
         return $this;
     }
