@@ -20,7 +20,7 @@ final class Version20210518095359 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP TABLE cart_line');
+        
         $this->addSql('ALTER TABLE product ADD is_best TINYINT(1) NOT NULL');
     }
 

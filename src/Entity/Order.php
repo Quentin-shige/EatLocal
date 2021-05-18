@@ -171,18 +171,7 @@ class Order
         return $this;
     }
 
-    public function getIsPaid(): ?bool
-    {
-        return $this->isPaid;
-    }
     
-
-    public function setIsPaid(bool $isPaid): self
-    {
-        $this->isPaid = $isPaid;
-
-        return $this;
-    }
 
     public function getState(): ?int
     {
