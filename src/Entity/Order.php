@@ -52,11 +52,6 @@ class Order
     private $orderDetails;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isPaid;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $state;
@@ -218,4 +213,5 @@ class Order
 
         return $this;
     }
+
 }
