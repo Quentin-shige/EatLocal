@@ -1,0 +1,40 @@
+// Panier
+
+h1 {
+    color: #888888;
+    margin-bottom: 0.8rem;
+}
+
+.orange-background {
+    background-color: #ECA383;
+    color: #F8F7F2;
+    font-size: larger;
+}
+
+.btn-orange-primary {
+    background-color: #E06936;
+    color: #F8F7F2;
+    border: 1px solid #E06936;
+    padding: 1em 1.9em;
+    border-radius: 4rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-orange-primary:hover {
+    background: #D45721;
+    text-decoration: none;
+    color: #F8F7F2;
+}
+
+.total-price {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.total-price table {
+    border-top: 4px solid #ECA383;
+    width: 100%;
+    max-width: 400px;
+}
