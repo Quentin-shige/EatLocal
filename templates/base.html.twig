@@ -20,42 +20,15 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body class="container">
         {% block body %}
         <header>
             <nav class="d-flex justify-content-between bg-text">
                 
                 <a href=" {{path('products') }}">Nos produits</a>
         </header>
-            <h3>Découvrez nos produitsles plus vendus !</h3>
-            
-                    <div class="card-group">
-                        <div class="d-flex align-items-stretch">
-                        {% for product in products %}
-                
-                            {% include 'product/single_product.html.twig' %}
-                    
-                        {% endfor %}
-                   </div>
-                   </div>
+       
 
-        <footer>
-            <div class="d-flex justify-content-evenly bg-success">
-            <div>
-                <h5>Contact</h5><br>
-                <a href="{{ path('contact')}}">Contactez-nous</a>
-            </div>
-            <div>
-                <h5>Moyen de paiment</h5><br>
-                <a href="https://stripe.com/fr">Notre solution de paiement</a>
-            </div>
-            <div>
-                <h5>Retrouvez-nous</h5>
-                <a href="www.facebook.com"><i class="fab fa-facebook-f"></i></a>
-                <a href="www.intasgram.com"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-        </footer>
         {% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
