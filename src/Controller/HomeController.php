@@ -17,7 +17,7 @@ class HomeController extends AbstractController
     {
         $this->entityManager= $entityManager;
     }
-    #[Route('/', name: 'home')]
+    #[Route('', name: 'home')]
     public function index(SessionInterface $session): Response
     {
 
