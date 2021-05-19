@@ -19,20 +19,20 @@ class StripeController extends AbstractController
     public function index(EntityManagerInterface $entityManager , Cart $cart, $reference)
     {
         $product_for_stripe = [];
-        $YOUR_DOMAIN = 'https://127.0.0.1:8000';
+        $YOUR_DOMAIN = 'http://127.0.0.1:8000';
         $order = $entityManager->getRepository(Order::class)->findOneByReference($reference);
 
         if (!$order) {
             new JsonResponse(['error' => 'order']);
         }
 
-        foreach ($order->getOrderDetails()->getValue() as $details){
+        foreach ($order->getOrderDetails()->getValues() as $details){
             $product_object = $entityManager->getRepository(Product::class)->findOneByName($details->getProduct());
             // Faire payement Stripe
             $product_for_stripe[] = [
                 'price_data' => [
                 'currency' => 'eur',
-                'unit_amount' => $details->getProduct()->getPrice(),
+                'unit_amount' => $product_object ->getPrice(),
                 'product_data' => [
                         'name' => $details->getProduct(),
                         'images' => ["https://127.0.0.1:8000/"."uploads/".$product_object->getIllustration()],
@@ -63,7 +63,7 @@ class StripeController extends AbstractController
             $product_for_stripe
             ],
           'mode' => 'payment',
-          'success_url' => $YOUR_DOMAIN.'/merci/{CHECKOUT_SESSION_ID}',
+          'success_url' => $YOUR_DOMAIN.'/commande/merci/{CHECKOUT_SESSION_ID}',
           'cancel_url' => $YOUR_DOMAIN.'/erreur/{CHECKOUT_SESSION_ID}',
         ]); 
 

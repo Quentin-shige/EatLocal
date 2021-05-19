@@ -38,7 +38,9 @@ class OrderController extends AbstractController
             'cart' => $cart->getFull()
         ]);
     }
-    #[Route('/commande/recap', name: 'order_recap')]
+   /**
+     * @Route("/commande/recapitulatif", name="order_recap", methods={"POST"})
+     */
     public function add(Cart $cart, Request $request): Response
     { 
         $form = $this->createForm(OrderType::class, null, [
@@ -67,7 +69,7 @@ class OrderController extends AbstractController
             $order->setCarrierName($carriers->getName());
             $order->setCarrierPrice($carriers->getPrice());
             $order->setDelivery($delivery_content);
-            $order->setState(1);
+            $order->setState(0);
 
             $this->entityManager->persist($order);
 
