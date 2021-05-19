@@ -10,9 +10,24 @@
         </div>
         <h1>Nos produits</h1>
         {% for product in products %}
-            
-                    {% include 'product/single_product.html.twig' %}
-                
-        {% endfor %}
+        <div class="card mb-3 container" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                  
+                  <img src="/uploads/{{product.illustration}}" alt="{{ product.name}}" class="img-fluid">
+                </a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{product.name}}</h5>
+                  <p class="card-text">{{product.description|u.truncate(120, '...')}}</p>
+                  <span>{{ (product.price /100)|number_format(2, ',', '.')}} €</span><br>
+                  <a href="{{path('product', { 'slug' : product.slug })}}" class="btn btn-info">Voir le produit</a>
+                  <a href="{{ path('add_to_cart', { 'id' : product.id }) }}" class="btn btn-primary">Ajouter au panier</a>
+                </div>
+              </div>
+            </div>
+          </div>
+         {% endfor %}
     </div> 
 {% endblock %}
