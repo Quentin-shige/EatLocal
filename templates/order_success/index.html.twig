@@ -3,11 +3,22 @@
 {% block title %}Confirmation de commande - EatLocal{% endblock %}
 
 {% block body %}
-    <h2>Confirmation de commande <i class="fab fa-angellist"></i></h2>
-    <h5>Bonjour <strong>{{ order.user.firstname }}</strong>, nous vous remercions pour votre commande n° <strong>{{order.reference}}</strong> </h5>
-    <h5>Une confirmation de votre commande a été envoyée par email à l'adresse suivante : <strong>{{order.user.email}}</strong> </h5>
-    <h5>Vôtre commande sera livrée prochainement par <strong>{{ order.carrierName }}</strong> à l'adresse suivante : <strong>{{order.delivery|raw}}</strong></h5>
-    <h5>EatLocal vous remercie pour vôtre confiance, à  très bientôt !</h5>
+<div class="px-4 py-5 my-5 text-center">
+    <i id="success-command" class="fas fa-check-circle d-block mx-auto mb-4"></i>
+    <h1 class="display-5 fw-bold">Confirmation de commande</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+        Bonjour <strong>{{ order.user.firstname }}</strong>, nous vous remercions pour votre commande n° <strong>{{order.reference}}</strong>.
+        Une confirmation de votre commande a été envoyée par email à l'adresse suivante : <strong>{{order.user.email}}</strong>.
+        Vôtre commande sera livrée prochainement par <strong>{{ order.carrierName }}</strong> à l'adresse suivante : <strong>{{order.delivery|raw}}</strong>.
+        EatLocal vous remercie pour vôtre confiance, à  très bientôt !
+        </p>
+        <div class="justify-content-sm-center mt-5">
+         <a href="{{ path('home')}}" class="btn-orange-primary btn-block">Revenir à l'accueil</a>
+        </div>
+    </div>
+
+</div>
 {% endblock %}
  
  {# Un retours a la homepage, vers comandes passes par ex ^pour avoir acces a ttes les commandes faites pas lutilisateur #}
