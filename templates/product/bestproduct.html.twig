@@ -1,23 +1,23 @@
-<h3>Découvrez nos produitsles plus vendus !</h3>
-            
-                    <div class="card-group">
-                        <div class="d-flex align-items-stretch">
-                        {% for product in products %}
-                
-                        
-        <div class="card" >
-            <img src="/uploads/{{product.illustration}}" class="card-img-top" alt="{{ product.name}}">
-            <div class="card-body">
-              <h5 class="card-title">{{product.name}}</h5>
-              <p class="card-text best">{{product.description|u.truncate(120, '...')}}
-                  <br>
-                  {{ (product.price /100)|number_format(2, ',', '.')}} €
-              </p>
-              <p class="card-text"> <a href="{{path('product', { 'slug' : product.slug })}}" class="btn btn-info"> Voir le produit</a>
-                  <a href="{{ path('add_to_cart', { 'id' : product.id }) }}" class="btn btn-primary">Ajouter au panier</a></p>
-            </div>
+<h3>Découvrez nos produits les plus vendus !</h3>
+<div class="row">
+{% for product in products %}
+<div class="card mb-3 container" style="max-width: 540px;">
+    <div class="row g-1">
+      <div class="col-md-4">
+          
+          <img src="/uploads/{{product.illustration}}" alt="{{ product.name}}" class="img-fluid" style="max-width: 100%; max-height: 100%">
+        </a>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">{{product.description|u.truncate(120, '...')}}</p>
+          <span>{{ (product.price /100)|number_format(2, ',', '.')}} €</span><br>
+          <a href="{{path('product', { 'slug' : product.slug })}}" class="btn btn-info">Voir le produit</a>
+          <a href="{{ path('add_to_cart', { 'id' : product.id }) }}" class="btn btn-primary">Ajouter au panier</a>
         </div>
-                    
-                        {% endfor %}
-                   </div>
-                   </div>
+      </div>
+    </div>
+  </div>
+ {% endfor %}
+</div>

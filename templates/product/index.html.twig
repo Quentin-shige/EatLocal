@@ -3,11 +3,11 @@
 {% block title %}Nos produits - EatLocal{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-md-3">
-            <h1>Filtrer</h1>
-            {{ form(form) }}
-        </div>
+<div class="row">
+  <div class="col-md-3">
+      <h1>Filtrer</h1>
+      {{ form(form) }}
+  </div>
         <h1>Nos produits</h1>
         {% for product in products %}
         <div class="card mb-3 container" style="max-width: 540px;">

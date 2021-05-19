@@ -1,0 +1,244 @@
+{% block body %}
+{% include "base.html.twig" %}
+<h2>Nos partenaires :</h2>
+<p>Voici les portraits de ceux qui nous acompagnent tous les jours :</p>
+
+<h3>Nos agriculteurs :</h3>
+<div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img style="max-width: 100%; max-height: 100%" src= {{asset("assets/img/farmers/Julien2.jpg")}} alt="Julien, notre fournisseur en légumes">
+      </div>
+      <div class="col-md-8 farmer-card">
+        <div class="card-body">
+          <h5 class="card-title">Julien Delcours :</h5>
+          <p class="card-text">Julien est un de nos agriculteurs. Cet ancien ingénieur de 31 ans fourni la plupart de nos légumes biologiques. Son exploitation est située à Landrethun-le-Nord dans le Pas-de-Calais. Il est le créateur du cornichon le Petit Vert du Nord qu’on retrouve dans notre boutique. Il sera heureux de vous accueillir sur ses 30 hectares. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+      
+      <div class="col-md-8 farmer-card">
+        <div class="card-body">
+          <h5 class="card-title">Jacqueline Poireau :</h5>
+          <p class="card-text">Jacqueline est notre experte des fruits et pourtant rien ne l'y destinait! Ancienne développeuse web, elle a choisi de se reconvertir dans l'arboriculture fruitière en 2014. Sept ans plus tard, son verger est le plus coloré de tout l'Artois. Les cerises, les pommes et prunes poussent en quasi-liberté dans ce gigantesque jardin intégralement maintenu à la main, sans phytosanitaires,"à l'ancienne". Notre collaboration lui a permis d'embaucher deux apprentis, afin de répandre la bonne parole au plus grand nombre.</p>
+        </div>
+      </div>
+      <div class="col-md-4" >
+        <img style="max-width: 100%; max-height: 100%" src= {{asset("assets/img/farmers/Jacqueline.jpg")}} alt="Jaqueline, notre experte en fruits.">
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img style="max-width: 100%; max-height: 100%" src= {{ asset("../assets/img/farmers/Elisa.jpg") }} alt="Elisa, notre experte en boissons biologique.">
+      </div>
+      <div class="col-md-8 farmer-card">
+        <div class="card-body">
+          <h5 class="card-title">Elisa Kurgan :</h5>
+          <p class="card-text">Elisa est notre experte en boisson bio. C’était sa destinée. Petite fille d’un des plus grands arboriculteurs et spécialistes du Pas-de-Calais. Son grand-père lui a tout appris. De la fabrication du cidre en passant par différents sirops, notre arboricultrice gère son domaine de 7 hectares avec son équipe uniquement composée de femmes. Ce dernier est entièrement bio. Elles vous attendent sur les terres du Ternois. 
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+        <div class="col-md-8 farmer-card">
+        <div class="card-body">
+          <h5 class="card-title">Quentin Bardel :</h5>
+          <p class="card-text">Quentin travaille avec nous depuis maintenant trois ans. Fils et petit-fils d'éleveur, sa passion et son amour pour les animaux l'ont poussé à abandonner les circuits dits "standard". Notre collaboration lui a permis de sortir du cadre infernal de l'hyper productivité au bénéfice du bien-être animal et de ses conditions de travail. Boeufs, porcs, Quentin aime ses bêtes et sera heureux de vous faire découvrir l'exploitation familiale située dans l'Avesnois, vous pourrez également échanger avec lui sur les nombreuses pratiques éco-responsables qu'il a su mettre en place dans sa ferme. 
+        </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <img style="max-width: 100%; max-height: 100%" src= {{asset("assets/img/farmers/Quentin.jpg")}} alt="Quentin, notre expert en viandes bovines et porcines.">
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img style="max-width: 100%; max-height: 100%"src= {{asset("assets/img/farmers/Myriam.jpg")}} alt="Myriam, notre experte en produits laitiers.">
+      </div>
+      <div class="col-md-8 farmer-card">
+        <div class="card-body">
+          <h5 class="card-title">Myriam Laforest :</h5>
+          <p class="card-text">Myriam est notre fournisseuse de produits laitiers Son élevage de 20 vaches et de 15 brebis vous attend à la sortie de Lille. Passionnée par son métier qu’elle a appris auprès de son grand-père d’adoption, elle a pris le flambeau de celui-ci en 2015. Convaincue que l’avenir de son métier est de se trouver au plus proche du consommateur, elle nous fait confiance pour vous fournir ses produits de qualité que sont ses différents yaourts et ses différents fromages. 
+
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+        <div class="col-md-8 farmer-card">
+            <div class="card-body">
+              <h5 class="card-title">Martin Dupont :</h5>
+              <p class="card-text">Martin est un pisciculteur de la région de Frévent. Il a repris l’affaire familiale en 2000. Fier de son métier, il apprend aux plus jeunes et aux moins jeunes la pêche à la truite. En plus de son activité, il nous fournit des truites entières parmi les trois espèces de son élevage qu’il a mis sous-vide, mais aussi de la truite fumée. 
+
+    
+            </p>
+            </div>
+          </div>
+      <div class="col-md-4">
+        <img style="max-width: 100%; max-height: 100%"src= {{asset("assets/img/farmers/Martin.jpg")}} alt="Martin, notre expert en poissons.">
+      </div>
+      
+    </div>
+  </div>
+  <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img style="max-width: 100%; max-height: 100%"src= {{asset("assets/img/farmers/Celine.jpg")}} alt="Céline, notre experte en produits confiseries et biscuits.">
+      </div>
+      <div class="col-md-8 farmer-card">
+        <div class="card-body">
+          <h5 class="card-title">Celine Duprez :</h5>
+          <p class="card-text">Céline est la dirigeante de l’entreprise Chuques du Nord. Elle nous fournit les confiseries traditionnelles de la région. Qui n’a jamais goûté les Bêtises de Cambrai ? Cette ancienne ingénieuse a quitté son métier pour rejoindre le groupe familial qui nous fournit aussi des gauffres et des gaufrettes, spécialités bien connues de la région. 
+
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<h3>Nos livreurs :</h3>
+
+<div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+        <div class="col-md-8 farmer-card">
+            <div class="card-body">
+              <h5 class="card-title">Emma :</h5>
+              <p class="card-text"> Emma est l'une de nos coursières à plein temps. Très sportive, elle se fera une joie de vous livrer avec son vélo. Pratiquant le vélo et le football de manière intensive, les longues livraisons ne lui font pas peur.
+
+    
+            </p>
+            </div>
+          </div>
+      <div class="col-md-4">
+        <img style="max-width: 100%; max-height: 100%"src= {{asset("assets/img/farmers/Emma.jpg")}} alt="Emma, notre coursière super sportive">
+      </div>
+      
+    </div>
+  </div>
+  <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img style="max-width: 100%; max-height: 100%"src= {{asset("assets/img/farmers/Gabr.jpg")}} alt="Gabriel, un de nos livreurs.">
+      </div>
+      <div class="col-md-8 farmer-card">
+        <div class="card-body">
+          <h5 class="card-title">Gabriel :</h5>
+          <p class="card-text">Gabriel est un jeune étudiant en botanique. Protégé la planete est une necessité pour lui, proche de nos valeurs, il n'a pas hésité à nous rejoindre.
+
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+        <div class="col-md-8 farmer-card">
+            <div class="card-body">
+              <h5 class="card-title">Jade :</h5>
+              <p class="card-text"> Jade est une jeune étudiante en droit. Elle se fera le plaisir de vous livrer en fin de journée entre 17 heures et 19 heures.
+
+    
+            </p>
+            </div>
+          </div>
+      <div class="col-md-4">
+        <img style="max-width: 100%; max-height: 100%"src= {{asset("assets/img/farmers/Jade.jpg")}} alt="Jade, notre coursière étudiante en droit">
+      </div>
+      
+    </div>
+  </div>
+  <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img style="max-width: 100%; max-height: 100%"src= {{asset("assets/img/farmers/Léo.jpg")}} alt="Léo est notre livreur charismatique.">
+      </div>
+      <div class="col-md-8 farmer-card">
+        <div class="card-body">
+          <h5 class="card-title">Léo :</h5>
+          <p class="card-text">Léo est notre livreur le plus charismatique. Sûr de lui, il n'hésitera pas à vous livrer n'importe où dans notre secteur de livraison.
+
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+        <div class="col-md-8 farmer-card">
+            <div class="card-body">
+              <h5 class="card-title">Raphaël :</h5>
+              <p class="card-text">Raphaël est notre plus ancien livreur. 
+    
+            </p>
+            </div>
+          </div>
+      <div class="col-md-4">
+        <img style="max-width: 100%; max-height: 100%"src= {{asset("assets/img/farmers/Raphael.jpg")}} alt="Raphaël est notre premier coursier.">
+      </div>
+      
+    </div>
+  </div>
+
+  <h3>Une équipe investie :</h3>
+  <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img style="max-width: 100%; max-height: 100%"src= {{asset("assets/img/farmers/Pierre.png")}} alt="Pierre notre génie du backend.">
+      </div>
+      <div class="col-md-8 farmer-card">
+        <div class="card-body">
+          <h5 class="card-title">Pierre Cherrid :</h5>
+          <p class="card-text">Pierre est notre génie du BackEnd. Sans lui, notre projet n'aurait pas pu avoir lieu. 
+
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+        <div class="col-md-8 farmer-card">
+            <div class="card-body">
+              <h5 class="card-title">Sabine Stuck :</h5>
+              <p class="card-text">Sabine est notre maquetiste de génie et une développeuse de talent qui gère aussi bien le backend et le frontend. 
+    
+            </p>
+            </div>
+          </div>
+      <div class="col-md-4">
+        <img style="max-width: 100%; max-height: 100%"src= {{asset("assets/img/farmers/Sabine.jpg")}} alt="Sabine est notre maquétiste de génie.">
+      </div>
+      
+    </div>
+  </div>
+  <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img style="max-width: 100%; max-height: 100%"src= {{asset("assets/img/farmers/QuentinDE.jpg")}} alt="Quentin notre génie fullstack.">
+      </div>
+      <div class="col-md-8 farmer-card">
+        <div class="card-body">
+          <h5 class="card-title">Quentin Delbarre :</h5>
+          <p class="card-text">Quentin est notre développeur fullstack de génie. Toutefois, il a une faiblesse envers les installations. 
+
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% include "footer.html.twig" %}
+{% endblock %}

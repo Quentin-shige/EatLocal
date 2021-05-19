@@ -7,8 +7,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="./public/assets/img/fav_icon.png" /> 
-        <link rel="stylesheet" href="../assets/styles/custom.scss">
+        <link rel="shortcut icon" href={{asset("assets/img/logo.png")}} type="image/x-icon">
         <link rel="stylesheet" href={{ asset("assets/css/style.css") }}>
         <title>{% block title %}Eat Local - Buy Local {% endblock %}</title>
 
@@ -23,11 +22,18 @@
     <body class="container">
         {% block body %}
         <header>
-            <nav class="d-flex justify-content-between bg-text">
+            <nav class="navbar d-flex justify-content-around">
+            
+                <img class="logo" src={{ asset("assets/img/logo.png")}}>
+                <a href=" {{path('products') }}">Nos produits </a> 
+                <a href="{{ path('farmer') }}">Nos fermiers</a>
+                <a href="{{ path('cart') }}">Mon pannier</a>
+                <a href="{{ path('account') }}">Mon compte</a>
+                Bienvenue {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
                 
-                <a href=" {{path('products') }}">Nos produits</a>
+            </nav>
         </header>
-       
+       <div class="background"></div>
 
         {% endblock %}
         {% block javascripts %}

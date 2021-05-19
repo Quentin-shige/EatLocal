@@ -1,3 +1,53 @@
-footer{
-    background-color: red;
+/*CSS du header */
+
+.navbar{
+    background-color: #FFFFFF;
+    background-repeat: contain;
+    background-image: url(../img/header.jpg);
+    background-size: 100%;
+    height: 25rem;
+}
+.logo{
+    max-width: 15%;
+    max-height: 15%;
+}
+
+/*CSS de la home page */
+.home{
+    background-color: #F8F7F2;
+}
+.ble{
+    background-image: url(../img/ble.jpg);
+    height: 25rem;
+    background-size: 100%;
+    background-repeat: contain;
+    padding-top: 6rem;
+}
+/* CSS de la page concept */
+.concept-card{
+    border: 1px solid black;
+    
+    width: 100px;
+    height: 50px;
+    border-radius: 60px/40px;
+    text-align: center;
+    margin: 1rem;
+    background-color: #ECA383;
+}
+.concept-card-body{
+    background-color: #F8F7F2;
+}
+/* CSS de la page farmer */
+.farmer-card{
+    background-color: #F8F7F2;
+}
+
+/* CSS des boutons*/
+.btn-orange{
+    border-radius: 5px;
+    background-color: #ECA383;
+}
+/*CSS Footer */
+.footer{
+    background-color: #ECA383;
 }
