@@ -1,14 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Erreur lors de la commande - EatLocal{% endblock %}
+{% block title %}Erreur lors du paiement de la commande - EatLocal{% endblock %}
 
 {% block body %}
-    <h2>Une erreur c'est produite lors de la commande</h2>
-    <h5>Bonjour <strong>{{ order.user.firstname }}</strong>, nous ne pouvons aboutir le paiement de votre commande n° <strong>{{order.reference}}</strong> </h5>
-    <h5>Une confirmation d'annulation de la commande a été envoyée par email à l'adresse suivante : <strong>{{order.user.email}}</strong> </h5>
-    <h5>EatLocal vous remercie pour vôtre confiance, à  très bientôt !</h5>
-    <hr>
-    {# <a href="{{ path('order')}}">Réessayer</a> #}
+<div class="px-4 py-5 my-5 text-center">
+    <i id="cancel-command" class="fas fa-ban  d-block mx-auto mb-4"></i>
+    <h1 class="display-5 fw-bold">Erreur lors du paiement de la commande</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+            Bonjour <strong>{{ order.user.firstname }}</strong>, nous ne pouvons aboutir le paiement de votre commande n° <strong>{{order.reference}}</strong>.
+            une confirmation d'annulation de la commande a été envoyée par email à l'adresse suivante : <strong>{{order.user.email}}</strong>.
+            EatLocal vous remercie pour vôtre confiance, à  très bientôt !
+        </p>
+        <div class="justify-content-sm-center mt-5">
+         <a href="{{ path('home')}}" class="btn-orange-primary btn-block">Revenir à l'accueil</a>
+        </div>
+    </div>
+
+</div>
 {% endblock %}
- 
- {# Un retours a la homepage et à la commande #}
+   
