@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% include "base.html.twig" %} 
 
 {% block title %}Nos produits - EatLocal{% endblock %}
 
@@ -30,4 +30,5 @@
           </div>
          {% endfor %}
     </div> 
+    {% include "footer.html.twig" %}
 {% endblock %}
