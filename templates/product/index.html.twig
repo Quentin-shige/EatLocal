@@ -10,11 +10,9 @@
         </div>
         <h1>Nos produits</h1>
         {% for product in products %}
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
+            
                     {% include 'product/single_product.html.twig' %}
-                </div>
-            </div>
+                
         {% endfor %}
     </div> 
 {% endblock %}

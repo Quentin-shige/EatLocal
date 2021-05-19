@@ -1,14 +1,15 @@
-<div class="col-md-4">
-    <a href="{{path('product', { 'slug' : product.slug })}}">
-        <img src="/uploads/{{product.illustration}}" alt="{{ product.name}}" class="img-fluid">
-    </a>
-    </div>
-    <div class="col-md-8">
-        <div class="card-body">
+
+        <div class="card .h-100">
+          <img src="/uploads/{{product.illustration}}" class="card-img-top" alt="{{ product.name}}">
+          <div class="card-body">
             <h5 class="card-title">{{product.name}}</h5>
-            <p class="card-text">{{product.description|u.truncate(120, '...')}}</p>
-            <span>{{ (product.price /100)|number_format(2, ',', '.')}} €</span>
-        <a href="{{path('product', { 'slug' : product.slug })}}" class="btn btn-info"> Voir le produit</a>
-        <a href="{{ path('add_to_cart', { 'id' : product.id }) }}" class="btn btn-primary">Ajouter au panier</a>
+            <p class="card-text best">{{product.description|u.truncate(120, '...')}}
+                <br>
+                {{ (product.price /100)|number_format(2, ',', '.')}} €
+            </p>
+            <p class="card-text"> <a href="{{path('product', { 'slug' : product.slug })}}" class="btn btn-info"> Voir le produit</a>
+                <a href="{{ path('add_to_cart', { 'id' : product.id }) }}" class="btn btn-primary">Ajouter au panier</a></p>
+          </div>
         </div>
-    </div>
+        
+      
