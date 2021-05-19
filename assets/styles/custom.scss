@@ -20,12 +20,12 @@ h1 {
     font-weight: bold;
     text-decoration: none;
     text-align: center;
-}
-
-.btn-orange-primary:hover {
-    background: #D45721;
-    text-decoration: none;
-    color: #F8F7F2;
+    
+    &:hover {
+        background: #D45721;
+        text-decoration: none;
+        color: #F8F7F2;
+    }
 }
 
 .total-price {
@@ -37,4 +37,14 @@ h1 {
     border-top: 4px solid #ECA383;
     width: 100%;
     max-width: 400px;
+}
+
+a.link-continue-shop {
+    text-decoration: none;
+    color:#447C45;
+    font-weight: bold;
+
+    &:hover{
+    color: #094225;
+    }
 }
