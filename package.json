@@ -31,7 +31,7 @@
         "@popperjs/core": "^2.9.2",
         "bootstrap": "^5.0.0",
         "font-awesome": "^4.7.0",
-        "stripe": "^8.148.0"
+        "stripe": "^8.149.0"
     }
 }
 stri
