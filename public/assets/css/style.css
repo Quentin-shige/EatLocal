@@ -59,7 +59,9 @@ header{
 .farmer-card{
     background-color: #F8F7F2;
 }
-
+.desc{
+    font-size: 20px;
+}
 /* CSS des boutons*/
 .btn-orange{
     border-radius: 5px;

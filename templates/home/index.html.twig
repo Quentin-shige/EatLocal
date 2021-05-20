@@ -1,39 +1,43 @@
 {% include "base.html.twig" %}
 {% block body %}
-<main class="home">
-<div class="d-flex justify-content-around">
-    <div>
-        <h5><i class="fab fa-pagelines justify-content-center"></i>
-        Equitable</h5>
-        <p>
-            Nos agriculteurs<br>sont bien<br>rémunérés.
-        </p>
-    </div>
-    <div>
-        <h5><i class="fas fa-pepper-hot"></i>Frais</h5>
-        <p>
-            Tous les produits<br>sont régionaux.
-        </p>
-    </div>
-    <div>
-        <h5><i class="fas fa-globe-europe"></i>Ecolo</h5>
-        <p>
-            Pas de longs<br>transports.
-        </p>
-    </div>
-    <div>
-        <h5><i class="fas fa-rocket"></i>Rapide</h5>
-        <p>
-            Livré chez vous en<br>moins de 24h.
-        </p>
-    </div>
-</div>
-<div class="ble text-center">
-    <h3>Des produits de chez nous</h3>
-    <p>Découvrez des produits locaux, artisannaux, bio et surtout savoureux</p>
-    <a class="btn-orange-primary" href="{{ path('products') }}">Notre boutique</a>
-</div>
-</main>
-{% include "product/bestproduct.html.twig" %}
-{% include "footer.html.twig" %}
+	<main class="home">
+		<div class="d-flex justify-content-around">
+			<div>
+				<h5>
+					<i class="fab fa-pagelines justify-content-center"></i>
+					Equitable</h5>
+				<p>
+					Nos agriculteurs<br>sont bien<br>rémunérés.
+				</p>
+			</div>
+			<div>
+				<h5>
+					<i class="fas fa-pepper-hot"></i>Frais</h5>
+				<p>
+					Tous les produits<br>sont régionaux.
+				</p>
+			</div>
+			<div>
+				<h5>
+					<i class="fas fa-globe-europe"></i>Ecolo</h5>
+				<p>
+					Pas de longs<br>transports.
+				</p>
+			</div>
+			<div>
+				<h5>
+					<i class="fas fa-rocket"></i>Rapide</h5>
+				<p>
+					Livré chez vous en<br>moins de 24h.
+				</p>
+			</div>
+		</div>
+		<div class="ble text-center">
+			<h3>Des produits de chez nous</h3>
+			<p>Découvrez des produits locaux, artisannaux, bio et surtout savoureux</p>
+			<a class="btn-orange-primary" href="{{ path('products') }}">Notre boutique</a>
+		</div>
+	</main>
+	{% include "product/bestproduct.html.twig" %}
+	{% include "footer.html.twig" %}
 {% endblock %}
