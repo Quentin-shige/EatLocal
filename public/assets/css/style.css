@@ -67,6 +67,11 @@ header{
 }
 /*CSS Footer */
 .footer{
-    background-color: #ECA383;
+    background-color: #E06936;
     margin-top: 2rem;
+    
+}
+footer a{
+    text-decoration: none;
+    color: black;
 }
