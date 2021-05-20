@@ -1,6 +1,8 @@
+{% extends 'base.html.twig' %}
+
 {% block title %}Ma commandes{% endblock %}
 
-{% block content %}
+{% block body %}
     <h1>Ma commande {{ order.reference }}</h1>
     <a href="{{ path('account_order') }}">Retour</a>
     <hr><strong></strong>

@@ -1,8 +1,8 @@
-
+{% include "base.html.twig" %} 
 
 {% block title %}Vous connecter sur EatLocal{% endblock %}
 
-{% block content %}
+{% block body %}
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

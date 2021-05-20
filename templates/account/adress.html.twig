@@ -1,6 +1,8 @@
+{% extends 'base.html.twig' %}
+
 {% block title %}Mes adresses{% endblock %}
 
-{% block content %}
+{% block body %}
     <a href="{{ path('account_adress_add') }}" class="btn btn-info btn-sm float-right">Ajouter une adresse</a>
     <h1>Mes adresses</h1>
     C'est dans cet espace que vous allez pouvoir gérer toutes vos adresses.<br/>
@@ -19,7 +21,7 @@
                             <h5 class="card-title">{{ adress.name }}</h5>
                             <p class="card-text">
                                 {{ adress.adress }},<br/>
-                                {{ adress.postal }} - {{ adress.city }} - {{ adress.country }}
+                                {{ adress.postal }} - {{ adress.city }}
                             </p>
                             <a href="{{ path('account_adress_edit', { 'id' : adress.id }) }}">Modifier</a> | <a href="{{ path('account_adress_delete', { 'id' : adress.id }) }}">Supprimer</a>
                         </div>
