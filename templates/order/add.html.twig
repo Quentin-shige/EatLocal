@@ -3,85 +3,85 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
     <script src="https://js.stripe.com/v3/"></script>
 {% endblock %}
-{% block title %}Paiement{% endblock %}
+{% block title %}Paiement - EatLocal{% endblock %}
 
 {% block body %}
-<h1>Récapitulatif de la commande<h1>
-<h4>Vérifiez votre panier et vos informations avant de finaliser votre commande</h4>
-<hr>
-<div class="row">
-    <div class="col-md-6">
-        <h4>Mon adresse de livraison</h4>
-       <h5>{{ delivery }}</h5>
-        <h4>Mon transporteur</h4>
-        <h5>{{ carrier.name }}</h5>
-        <h7>{{ carrier.description }}</h7>
-         <h4>Prix de la livraison</h4>
-        <h5>{{ (carrier.price / 100)|number_format(2,',','.') }} € </h5>
-    </div>
-    <div class="col-md-6">
-        <div class="text-center">
-            <h4>Récapitulatif de ma commande</h4>
-            <h6>Voici le récapitulatif de votre commande en cours..<h6>
+<div class="container mt-5 text-center">
+    <h1>Récapitulatif de la commande<h1>
+    <h5>Vérifiez votre panier et vos informations avant de finaliser votre commande</h5>
+    <i id="see-more" class="fas fa-angle-double-down d-block mx-auto mt-4 mb-2"></i>
+    <div class="row">
+        <div class="col-md-6 mt-5 text-center">
+            <h4><i class="fas fa-map-marked-alt"></i> Mon adresse de livraison</h4></br>
+                <b>{{ delivery }}</b></br></br>
+            <h4><i class="fas fa-truck"></i> Mon transporteur</h4></br>
+                <b>{{ carrier.name }}</b><br>
+            <h7>{{ carrier.description }}</h7></br></br>
+            <h4>Prix de la livraison</h4></br>
+            <h5>{{ (carrier.price / 100)|number_format(2,',','.') }} € </h5>
         </div>
-    </div>
-    <div>
-    {% set total = null %}
-    {% for key,product in cart %}
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="/uploads/{{product.product.illustration}}" alt="{{ product.product.name}}" class="img-fluid">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">{{product.product.name}}</h5>
-                            <h5> x {{product.quantity}}</h5>
-                            <span>{{ (product.product.price  * product.quantity /100)|number_format(2, ',', '.')}} €</span>
+        <div class="col-md-6 mt-5">
+            <div class="text-center">
+                <h4>Voici le récapitulatif de votre commande en cours... <i class="fas fa-shopping-basket"></i></h4></br>
+            </div>
+            {% set total = null %}
+            {% for key,product in cart %}
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="/uploads/{{product.product.illustration}}" alt="{{ product.product.name}}" class="img-fluid">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{product.product.name}}</h5>
+                                    <h5> x {{product.quantity}}</h5>
+                                    <span>{{ (product.product.price  * product.quantity /100)|number_format(2, ',', '.')}} €</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            {% set total = total + (product.product.price * product.quantity) %}
-    {% endfor %}
-        Sous-Total : {{ (total / 100)|number_format(2, ',', '.') }} €
-        Total avec livraison : {{ (total / 100 + (carrier.price / 100))|number_format(2,',','.') }} €
-    </div>
-</div>
-<a id ="checkout-button" class="btn btn-success">Payer €</a>
-{% endblock %}
-{% block script %}
- <script>
-    // Create an instance of the Stripe object with your publishable API key
-    var stripe = Stripe("pk_test_51IrmcmGC4UGSFjC3LVSKQHN61yyHKj5cuwQqRtBjrV8Sj3PEjYtDwBGjH1pBGo8Xs1DkpZZIqRwqyDqyn1ybYiWH00gxJE5CmA");
-    var checkoutButton = document.getElementById("checkout-button");
-    checkoutButton.addEventListener("click", function () {
-        console.log('clic');
-        fetch("/commande/create-session/{{ reference }}", {
-            method: "POST",
-        })
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (session) {
-            if (session.error == 'order') {
-            //redirect to reseignements
-                window.location.replace('{{ path("order")}}');
-            } else {
-                 return stripe.redirectToCheckout({ sessionId: session.id });
+                    {% set total = total + (product.product.price * product.quantity) %}
+            {% endfor %}
+        </div>
+        <div class="mt-5 mb-5">
+            <h5 style="text-align: end"><b>Sous-Total : {{ (total / 100)|number_format(2, ',', '.') }} €</b></h5>
+            <h5 style="text-align: end"><b>Total avec livraison : {{ (total / 100 + (carrier.price / 100))|number_format(2,',','.') }} €</b></h5>
+        </div>
+            <a id ="checkout-button" class="btn-orange-primary">Payer €</a>
+    {% endblock %}
+    {% block script %}
+    <script>
+        // Create an instance of the Stripe object with your publishable API key
+        var stripe = Stripe("pk_test_51IrmcmGC4UGSFjC3LVSKQHN61yyHKj5cuwQqRtBjrV8Sj3PEjYtDwBGjH1pBGo8Xs1DkpZZIqRwqyDqyn1ybYiWH00gxJE5CmA");
+        var checkoutButton = document.getElementById("checkout-button");
+        checkoutButton.addEventListener("click", function () {
+            console.log('clic');
+            fetch("/commande/create-session/{{ reference }}", {
+                method: "POST",
+            })
+            .then(function (response) {
+            return response.json();
+            })
+            .then(function (session) {
+                if (session.error == 'order') {
+                //redirect to reseignements
+                    window.location.replace('{{ path("order")}}');
+                } else {
+                    return stripe.redirectToCheckout({ sessionId: session.id });
+                }
+            })
+            .then(function (result) {
+            // If redirectToCheckout fails due to a browser or network
+            // error, you should display the localized error message to your
+            // customer using error.message.
+            if (result.error) {
+                alert(result.error.message);
             }
-        })
-        .then(function (result) {
-          // If redirectToCheckout fails due to a browser or network
-          // error, you should display the localized error message to your
-          // customer using error.message.
-          if (result.error) {
-            alert(result.error.message);
-          }
-        })
-        .catch(function (error) {
-          console.error("Error:", error);
+            })
+            .catch(function (error) {
+            console.error("Error:", error);
+            });
         });
-    });
- </script>
+    </script>
+</div>
 {% endblock %}

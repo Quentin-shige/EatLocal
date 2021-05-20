@@ -1,8 +1,17 @@
-// Panier
+// Styles 
 
 h1 {
-    color: #888888;
+    color: 	#585858;
     margin-bottom: 0.8rem;
+}
+
+h4 {
+    color: #E06936;
+}
+
+h5 {
+    color: #447C45;
+
 }
 
 .orange-background {
@@ -28,6 +37,7 @@ h1 {
     }
 }
 
+// Panier
 .total-price {
     display: flex;
     justify-content: flex-end;
@@ -61,4 +71,12 @@ a.link-continue-shop {
 #cancel-command{
     color: #d62828;
     font-size: 10rem;
+}
+
+//See more - Under
+
+#see-more {
+    font-size: 5rem;
+    color: #D45721;
+    text-align: center;
 }
