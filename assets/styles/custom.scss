@@ -32,7 +32,7 @@ h6 {
     background-color: #E06936;
     color: #F8F7F2;
     border: 1px solid #E06936;
-    padding: 1em 1.9em;
+    padding: 0.5em;
     border-radius: 4rem;
     font-weight: bold;
     text-decoration: none;
@@ -40,6 +40,22 @@ h6 {
     
     &:hover {
         background: #D45721;
+        text-decoration: none;
+        color: #F8F7F2;
+    }
+}
+.btn-green-primary {
+    background-color: #447C45;
+    color: #F8F7F2 !important;
+    border: 1px solid #447C45;
+    padding: 0.5em;
+    border-radius: 4rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    
+    &:hover {
+        background: #006400;
         text-decoration: none;
         color: #F8F7F2;
     }

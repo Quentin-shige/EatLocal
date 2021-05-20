@@ -3,8 +3,9 @@
 {% block title %}{{product.name}} - EatLocal{% endblock %}
 
 {% block body %}
-   <h1>{{product.name}}</h1>
-    <div class="row">
+<h1>{{product.name}}</h1><br>
+
+    <div class="row d-flex justify-content-center text-center">
         <div class="col-md-4">
             <div class="card-product text-center">
                 <a href="{{path('product', { 'slug' : product.slug })}}">
@@ -16,20 +17,13 @@
                 <span>{{ (product.price /100)|number_format(2, ',', '.')}} €</span>
                 <hr>
             </div>
-                <a href={{ path("add_to_cart", {"id": product.id})}} class="btn btn-primary"> Ajouter au panier</a>
+                <a href={{ path("add_to_cart", {"id": product.id})}} class="btn-orange-primary "> Ajouter au panier</a>
         </div>
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{product.name}}</h5>
-        <p class="card-text">{{product.description}}</p>
-        <span>{{ (product.price /100)|number_format(2, ',', '.')}} €</span>
-        <a href="{{ path('add_to_cart', { 'id' : product.id }) }}" class="btn btn-primary">Ajouter au panier</a>
-      </div>
-    </div>
-  </div>
-</div>
+    
+  
 <hr>
 {% include "product/bestproduct.html.twig" %}
-
+{% include "footer.html.twig" %}
 {% endblock %}
+

@@ -1,8 +1,10 @@
 {% include "base.html.twig" %}
+{% block body %}
 <main class="home">
 <div class="d-flex justify-content-around">
     <div>
-        <h5><i class="fab fa-pagelines"></i>Equitable</h5>
+        <h5><i class="fab fa-pagelines justify-content-center"></i>
+        Equitable</h5>
         <p>
             Nos agriculteurs<br>sont bien<br>rémunérés.
         </p>
@@ -29,8 +31,9 @@
 <div class="ble text-center">
     <h3>Des produits de chez nous</h3>
     <p>Découvrez des produits locaux, artisannaux, bio et surtout savoureux</p>
-    <button class="btn-orange"><a href="{{path('products')}}">Notre boutique</a></button>
+    <a class="btn-orange-primary" href="{{ path('products') }}">Notre boutique</a>
 </div>
 </main>
 {% include "product/bestproduct.html.twig" %}
 {% include "footer.html.twig" %}
+{% endblock %}
