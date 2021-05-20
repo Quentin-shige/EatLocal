@@ -2,14 +2,17 @@
 
 
 {% block body %}
-<div class="row">
-  <div class="col-md-12">
-    <h1>Filtrer</h1>
+<div class="row search-bar">
+  <div class="col-md-5 p-lg-5 mx-auto">
+  <h1 style="text-align: center">Filtrer</h1>
     {{ form_start(form) }}
     {{ form_row (form.string)}}
     {{ form_row (form.categories)}}
+    <div class="mt-3 text-center">
+    {{ form(form) }}   
+    </div>
   </div>
-        <h1>Nos produits</h1>
+        <h1 class="mt-2 mb-3">Nos produits</h1>
         {% for product in products %}
         <div class="card mb-3 container" style="max-width: 540px;">
             <div class="row g-0">

@@ -4,31 +4,33 @@
 
 {% block body %}
 <div class="container">
-    <h1>Passer ma commande<h1>
-    <h5>Choisissez vos préférences</h5>
+    <h1 class="my-2">Passer ma commande<h1>
+    <h5>Choisissez vos préférences <i class="far fa-address-book"></i></h5>
 <div class="row">
    <div class="col-md-6">
         {% set formHtml %}
-            {{form_start(form, {action:path('order_recap')})}}</h5>
-            <b>{{ form_label(form.adresses, 'Choisir l\'adresse de livraison')}}</b>
-            <a href="{{ path('account_adress_add')}}">Ajouter une nouvelle adresse</a>
+            {{form_start(form, {action:path('order_recap')})}}
+            <h4>{{ form_label(form.adresses, 'Choisir l\'adresse de livraison')}}</h4>
+            <a style="text-decoration:none" href="{{ path('account_adress_add')}}"> <i class="fas fa-plus-circle"></i> Ajouter une nouvelle adresse</a>
             {{form_end(form)}}
         {% endset %}
         {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
    </div>
    <div class="col-md-6">
-        <b>Récapitulatif de ma commande</b>
+        <h4  class="my-4">Récapitulatif de ma commande</h4>
         {% for key,product in cart %}
-                <div class="card mb-3" style="max-width: 540px;">
+                <div class="card mb-2" style="max-width: 540px;">
                     <div class="row g-0">
                         <div class="col-md-4">
                             <img src="/uploads/{{product.product.illustration}}" alt="{{ product.product.name}}" class="img-fluid">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">{{product.product.name}}</h5>
-                                <h5> x {{product.quantity}}</h5>
-                                <span>{{ (product.product.price  * product.quantity /100)|number_format(2, ',', '.')}} €</span>
+                                <h5 class="card-title text-center">{{product.product.name}}</h5>
+                                <h5 class="quantity-line text-center"> Quantité x {{product.quantity}}</h5>
+                                <div class="price-line">
+                                    <span>{{ (product.product.price  * product.quantity /100)|number_format(2, ',', '.')}} €</span> 
+                                </div>
                             </div>
                         </div>
                     </div>
