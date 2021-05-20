@@ -1,6 +1,7 @@
+{% block title %}Vous connecter sur EatLocal{% endblock %}
+
 {% include "base.html.twig" %} 
 
-{% block title %}Vous connecter sur EatLocal{% endblock %}
 
 {% block body %}
 <form method="post">
@@ -35,8 +36,9 @@
         <a href="{{ path('register')}}">Créer un compte</a>
     
 
-    <button class="btn btn-lg btn-primary" type="submit">
+    <button class="btn btn-lg btn-primary m-auto" type="submit">
         Connexion
     </button>
 </form>
+{% include 'footer.html.twig' %}
 {% endblock %}

@@ -1,6 +1,8 @@
 {% include "base.html.twig" %}
 
-<h1>Notre concept</h1>
+
+{% block body %}
+<h2>Notre concept</h2>
 
 <div class="card mb-3" style="max-width: 100%;">
     <div class="row g-0">
@@ -82,3 +84,5 @@
     </div>
   </div>
   {% include "footer.html.twig" %}
+  {% endblock %}
+  
