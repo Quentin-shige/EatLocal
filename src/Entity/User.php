@@ -76,16 +76,10 @@ class User implements UserInterface
      */
     private $orders;
 
-    /**
-     * @ORM\OneToMany(targetEntity=CartLine::class, mappedBy="User")
-     */
-    private $cartLines;
-
     public function __construct()
     {
         $this->adresses = new ArrayCollection();
         $this->orders = new ArrayCollection();
-        $this->cartLines = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -300,36 +294,6 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($order->getUser() === $this) {
                 $order->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|CartLine[]
-     */
-    public function getCartLines(): Collection
-    {
-        return $this->cartLines;
-    }
-
-    public function addCartLine(CartLine $cartLine): self
-    {
-        if (!$this->cartLines->contains($cartLine)) {
-            $this->cartLines[] = $cartLine;
-            $cartLine->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCartLine(CartLine $cartLine): self
-    {
-        if ($this->cartLines->removeElement($cartLine)) {
-            // set the owning side to null (unless already changed)
-            if ($cartLine->getUser() === $this) {
-                $cartLine->setUser(null);
             }
         }
 
