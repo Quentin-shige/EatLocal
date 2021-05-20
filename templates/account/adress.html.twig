@@ -5,7 +5,7 @@
 {% block body %}
     <a href="{{ path('account_adress_add') }}" class="btn btn-info btn-sm float-right">Ajouter une adresse</a>
     <h1>Mes adresses</h1>
-    C'est dans cet espace que vous allez pouvoir gérer toutes vos adresses.<br/>
+    C'est dans cet espace que vous pouvez gérer toutes vos adresses.<br/>
     <a href="{{ path('account') }}">Retour</a>
     <hr>
     {% if app.user.adresses|length == 0 %}
@@ -30,4 +30,5 @@
             {% endfor %}
         </div>
     {% endif %}
+    {% include 'footer.html.twig' %}
 {% endblock %}

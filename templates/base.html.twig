@@ -20,7 +20,7 @@
         {% endblock %}
     </head>
     <body class="container">
-        {% block body %}
+        
         <header>
             <nav class="navbar d-flex justify-content-between">
     
@@ -39,8 +39,9 @@
                 {% endif %}
             </nav>
         </header>
-       
-
+       <div class="background"></div>
+        {% block body %}
+        
         {% endblock %}
         {% block script %}
         {% endblock %}
@@ -48,7 +49,6 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
         
-        {% endblock %}
     </body>
     
 </html> 

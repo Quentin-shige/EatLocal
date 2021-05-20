@@ -1,12 +1,14 @@
 {% include 'base.html.twig' %}
 
+{% block title %}Votre compte{% endblock %}
+
 {% block body %}
     <h1>Mon compte</h1>
     {% if is_granted('ROLE_ADMIN') %}
-        <small><a href="/admin">Vous êtes un administrateur, accéder au backoffice ?</a></small><br/>
+        <small><a href="/admin">Vous êtes un administrateur, cliquez ici pour accéder au backoffice ?</a></small><br/>
     {% endif %}
-    Bienvenue {{ app.user.firstname }} dans votre compte.<br/>
-    C'est dans cet espace que vous allez pouvoir gérer toutes vos informations personnelles.
+    Bienvenue dans votre compte {{ app.user.firstname }}.<br/>
+    C'est dans cet espace que vous pouvez gérer toutes vos informations personnelles.
     <hr>
     <div class="row">
         <div class="col-md-4">
@@ -29,6 +31,8 @@
         </div>
     </div>
     <hr>
+    {% include 'footer.html.twig' %}
 {% endblock %}
 {% include "footer.html.twig" %}
+
 
