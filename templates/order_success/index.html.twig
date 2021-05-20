@@ -3,7 +3,7 @@
 {% block title %}Confirmation de commande - EatLocal{% endblock %}
 
 {% block body %}
-    <h2>Confirmation de commande</h2>
+    <h2>Confirmation de commande <i class="fab fa-angellist"></i></h2>
     <h5>Bonjour <strong>{{ order.user.firstname }}</strong>, nous vous remercions pour votre commande n° <strong>{{order.reference}}</strong> </h5>
     <h5>Une confirmation de votre commande a été envoyée par email à l'adresse suivante : <strong>{{order.user.email}}</strong> </h5>
     <h5>Vôtre commande sera livrée prochainement par <strong>{{ order.carrierName }}</strong> à l'adresse suivante : <strong>{{order.delivery|raw}}</strong></h5>
