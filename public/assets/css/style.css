@@ -59,7 +59,9 @@ header{
 .farmer-card{
     background-color: #F8F7F2;
 }
-
+.desc{
+    font-size: 20px;
+}
 /* CSS des boutons*/
 .btn-orange{
     border-radius: 5px;
@@ -67,6 +69,10 @@ header{
 }
 /*CSS Footer */
 .footer{
-    background-color: #ECA383;
+    background-color: #E06936;
     margin-top: 2rem;
+}
+footer a{
+    text-decoration: none;
+    color: black;
 }

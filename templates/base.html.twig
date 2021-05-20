@@ -1,54 +1,51 @@
-
 <!DOCTYPE html>
-<html>
+<html></html>
 <html lang="fr">
-    <head>
-        <!-- ... -->
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href={{ asset("assets/img/logo.png")}} type="image/x-icon">
-        <link rel="stylesheet" href={{ asset("assets/css/style.css") }}>
-        <title>{% block title %}Eat Local - Buy Local {% endblock %}</title>
+	<head>
+		<!-- ... -->
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href={{ asset("assets/img/logo.png")}} type="image/x-icon">
+		<link rel="stylesheet" href={{ asset("assets/css/style.css") }}>
+		<title>
+			{% block title %}Eat Local - Buy Local
+			{% endblock %}
+		</title>
 
-        {# block JS pour Stripe si besoin dans add.html.twig #}
-        {% block javascript %}
-        {% endblock %}
+		{# block JS pour Stripe si besoin dans add.html.twig #}
+		{% block javascript %}{% endblock %}
 
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-    </head>
-    <body class="container">
-        
-        <header>
-            <nav class="navbar d-flex justify-content-between">
-    
-                
-                <a  href="{{path('home')}}"><img class="logo" src={{ asset("assets/img/logo.png")}} ></a>
-        
-                <a href=" {{path('products') }}">Nos produits </a> 
-                <a href="{{ path('farmer') }}">Nos partenaires</a>
-                {% if app.user %}
-                <a  href="{{ path('cart') }}">Mon pannier</a>
-                <a href="{{ path('account') }}">Mon compte</a>
-                Bienvenue {{ app.user.FirstName }}, <a class ="btn-green-primary" style="margin-right: 2rem;" href="{{ path('app_logout') }}">Déconnexion</a>
-                {% else %}
-                    <a  href="{{ path('app_login') }}">Connexion</a>
-                    <a href="{{ path('register')}}">Créer un compte</a>
-                {% endif %}
-            </nav>
-        </header>
-       <div class="background"></div>
-        {% block body %}
-        
-        {% endblock %}
-        {% block script %}
-        {% endblock %}
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-        
-    </body>
-    
-</html> 
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+	</head>
+	<body class="container">
+
+		<header>
+			<nav class="navbar d-flex justify-content-between">
+				<a href="{{path('home')}}"><img class="logo" src={{ asset("assets/img/logo.png")}}></a>
+				<a href=" {{path('products') }}">Nos produits
+				</a>
+				<a href="{{ path('farmer') }}">Nos partenaires</a>
+				{% if app.user %}
+					<a href="{{ path('cart') }}">Mon pannier</a>
+					<a href="{{ path('account') }}">Mon compte</a>
+					Bienvenue
+					{{ app.user.FirstName }},
+					<a class="btn-green-primary" style="margin-right: 2rem;" href="{{ path('app_logout') }}">Déconnexion</a>
+				{% else %}
+					<a href="{{ path('app_login') }}">Connexion</a>
+					<a style="margin-right: 2rem;" href="{{ path('register')}}">Créer un compte</a>
+				{% endif %}
+			</nav>
+		</header>
+		<div class="background"></div>
+		{% block body %}{% endblock %}
+		{% block script %}{% endblock %}
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</body>
+
+</html>
