@@ -57,10 +57,11 @@ class OrderController extends AbstractController
             {
             $delivery_content = $delivery->getCompany();
             }
-            $delivery_content = $delivery->getAdress();
-            $delivery_content = $delivery->getPostal().' '.$delivery->getCity();
             
-            //Enregistrer la commande
+            $delivery_content = $delivery->getPostal().' '.$delivery->getCity().' '.$delivery->getAdress();
+            dump($delivery_content);
+            dump($delivery)
+;            //Enregistrer la commande
             $order = new Order();
             $reference = $date->format('dmY').'-'.uniqid();
             $order->setReference($reference);
