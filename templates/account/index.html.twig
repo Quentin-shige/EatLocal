@@ -1,3 +1,4 @@
+{% extends 'base.html.twig' %}
 
 
 {% block content %}
@@ -13,7 +14,7 @@
 <a href="{{ path('account_order') }}">Mes commandes</a>
 </div>
 
-{% block content %}
+{% block body %}
     <h1>Mon compte</h1>
     {% if is_granted('ROLE_ADMIN') %}
         <small><a href="/admin">Vous êtes un administrateur, accéder au backoffice ?</a></small><br/>
@@ -43,3 +44,4 @@
     </div>
     <hr>
 {% endblock %}
+
