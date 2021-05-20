@@ -13,10 +13,10 @@
     <div class="row">
         <div class="col-md-6 mt-5 text-center">
             <h4><i class="fas fa-map-marked-alt"></i> Mon adresse de livraison</h4></br>
-                <b>{{ delivery }}</b></br></br>
+                <h6><b>{{ delivery }}</b></h6></br></br>
             <h4><i class="fas fa-truck"></i> Mon transporteur</h4></br>
-                <b>{{ carrier.name }}</b><br>
-            <h7>{{ carrier.description }}</h7></br></br>
+                <h6><b>{{ carrier.name }}</b></h6>
+            <h6>{{ carrier.description }}</h6></br></br>
             <h4>Prix de la livraison</h4></br>
             <h5>{{ (carrier.price / 100)|number_format(2,',','.') }} € </h5>
         </div>
@@ -33,9 +33,13 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{product.product.name}}</h5>
-                                    <h5> x {{product.quantity}}</h5>
-                                    <span>{{ (product.product.price  * product.quantity /100)|number_format(2, ',', '.')}} €</span>
+                                    <div class="card-title">{{product.product.name}}</div>
+                                     <div class="quantity-line">
+                                        Quantité x {{product.quantity}}</br>
+                                     </div>
+                                     <div class="price-line">
+                                        <span>{{ (product.product.price  * product.quantity /100)|number_format(2, ',', '.')}} €</span>
+                                     </div>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +51,7 @@
             <h5 style="text-align: end"><b>Sous-Total : {{ (total / 100)|number_format(2, ',', '.') }} €</b></h5>
             <h5 style="text-align: end"><b>Total avec livraison : {{ (total / 100 + (carrier.price / 100))|number_format(2,',','.') }} €</b></h5>
         </div>
-            <a id ="checkout-button" class="btn-orange-primary">Payer €</a>
+            <a id ="checkout-button" class="btn-orange-primary">Payer :  {{ ((total / 100) + (carrier.price / 100))|number_format(2, ',', '.') }} €</a>
     {% endblock %}
     {% block script %}
     <script>

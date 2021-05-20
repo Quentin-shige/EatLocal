@@ -3,15 +3,23 @@
 h1 {
     color: 	#585858;
     margin-bottom: 0.8rem;
+    font-family: 'Roboto', sans-serif;
 }
 
 h4 {
     color: #E06936;
+    font-family: 'Roboto', sans-serif;
 }
 
 h5 {
     color: #447C45;
+    font-family: 'Roboto', sans-serif;
+}
 
+h6 {
+    font-family: 'Open Sans', sans-serif;
+    color: 	#202020;
+    font-size: 1rem;
 }
 
 .orange-background {
@@ -79,4 +87,28 @@ a.link-continue-shop {
     font-size: 5rem;
     color: #D45721;
     text-align: center;
+}
+
+//price line command recap
+
+.price-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 4rem;
+    font-weight: bold;
+    color: #ECA383;
+}
+
+.card-title {
+    color: #447C45;
+    font-family: 'Roboto', sans-serif;
+}
+
+.quantity-line {
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    color: 	#202020;
+    font-size: small;
 }
