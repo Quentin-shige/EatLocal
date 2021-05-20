@@ -30,6 +30,7 @@ class SearchType extends AbstractType
             'class' => Category::class, 
             'multiple' => true,
             'expanded' => true,
+            'label_attr' => ['class'=>'checkbox-inline'],
         ])
 
         ->add('submit', SubmitType::class, [
