@@ -22,7 +22,9 @@ header{
     max-width: 10rem;
     max-height: 10rem;
 }
-
+.dec{
+    margin-right: 10rem;
+}
 /*CSS de la home page */
 .home{
     background-color: #F8F7F2;
