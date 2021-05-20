@@ -1,11 +1,13 @@
-{% include "base.html.twig" %} 
+{% include "base.html.twig" %}
 
 
 {% block body %}
 <div class="row">
-  <div class="col-md-3">
-      <h1>Filtrer</h1>
-      {{ form(form) }}
+  <div class="col-md-12">
+    <h1>Filtrer</h1>
+    {{ form_start(form) }}
+    {{ form_row (form.string)}}
+    {{ form_row (form.categories)}}
   </div>
         <h1>Nos produits</h1>
         {% for product in products %}
