@@ -3,12 +3,21 @@
 {% block title %}{{product.name}} - EatLocal{% endblock %}
 
 {% block body %}
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <a href="{{path('product', { 'slug' : product.slug })}}">
-        <img src="/uploads/{{product.illustration}}" alt="{{ product.name}}" class="img-fluid">
-      </a>
+   <h1>{{product.name}}</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card-product text-center">
+                <a href="{{path('product', { 'slug' : product.slug })}}">
+                <img src="/uploads/{{product.illustration}}" alt="{{ product.name}}" class="img-fluid">
+                </a>
+                <h4>{{product.name}}</h4>
+                <hr>
+                <p>{{product.description}}</p>
+                <span>{{ (product.price /100)|number_format(2, ',', '.')}} €</span>
+                <hr>
+            </div>
+                <a href={{ path("add_to_cart", {"id": product.id})}} class="btn btn-primary"> Ajouter au panier</a>
+        </div>
     </div>
     <div class="col-md-8">
       <div class="card-body">
