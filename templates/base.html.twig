@@ -27,10 +27,14 @@
                 <img class="logo" src={{ asset("assets/img/logo.png")}}>
                 <a href=" {{path('products') }}">Nos produits </a> 
                 <a href="{{ path('farmer') }}">Nos fermiers</a>
+                {% if app.user %}
                 <a href="{{ path('cart') }}">Mon pannier</a>
                 <a href="{{ path('account') }}">Mon compte</a>
                 Bienvenue {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
-                
+                {% else %}
+                    <a href="{{ path('app_login') }}">Connexion</a>
+                    <a href="{{ path('register')}}">Créer un compte</a>
+                {% endif %}
             </nav>
         </header>
        <div class="background"></div>
