@@ -7,7 +7,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href={{asset("assets/img/logo.png")}} type="image/x-icon">
+        <link rel="shortcut icon" href={{ asset("assets/img/logo.png")}} type="image/x-icon">
         <link rel="stylesheet" href={{ asset("assets/css/style.css") }}>
         <title>{% block title %}Eat Local - Buy Local {% endblock %}</title>
 
@@ -22,28 +22,32 @@
     <body class="container">
         {% block body %}
         <header>
-            <nav class="navbar d-flex justify-content-around">
-            
-                <img class="logo" src={{ asset("assets/img/logo.png")}}>
+            <nav class="navbar d-flex justify-content-between">
+    
+                
+                <a  href="{{path('home')}}"><img class="logo" src={{ asset("assets/img/logo.png")}} ></a>
+        
                 <a href=" {{path('products') }}">Nos produits </a> 
-                <a href="{{ path('farmer') }}">Nos fermiers</a>
+                <a href="{{ path('farmer') }}">Nos partenaires</a>
                 {% if app.user %}
-                <a href="{{ path('cart') }}">Mon pannier</a>
+                <a  href="{{ path('cart') }}">Mon pannier</a>
                 <a href="{{ path('account') }}">Mon compte</a>
-                Bienvenue {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+                Bienvenue {{ app.user.FirstName }}, <a class ="btn-green-primary" href="{{ path('app_logout') }}">Déconnexion</a>
                 {% else %}
-                    <a href="{{ path('app_login') }}">Connexion</a>
+                    <a  href="{{ path('app_login') }}">Connexion</a>
                     <a href="{{ path('register')}}">Créer un compte</a>
                 {% endif %}
             </nav>
         </header>
-       <div class="background"></div>
+       
 
         {% endblock %}
+        {% block script %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
-        {#{% include 'footer.html.twig' %}#}
+        
+        {% endblock %}
     </body>
     
 </html> 

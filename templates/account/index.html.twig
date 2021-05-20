@@ -1,18 +1,5 @@
-{% extends 'base.html.twig' %}
+{% include 'base.html.twig' %}
 
-
-{% block content %}
-
-<h1>mon compte</h1>
-{% if is_granted('ROLE_ADMIN')%}
-
-<div class="d-flex justify-content-around bg-text">
-<a href="/admin">Administrateur, cliquez ici pour accéder au backoffice</a>
-{% endif %}
-<a href="{{ path('account_password')}}">Modifier mon mot de passe</a>
-<a href="{{ path('account_adress')}}">Gérer mes adresses</a>
-<a href="{{ path('account_order') }}">Mes commandes</a>
-</div>
 
 {% block body %}
     <h1>Mon compte</h1>
@@ -37,11 +24,12 @@
         </div>
         <div class="col-md-4">
             <div class="account-item text-center">
-                <img src="{{ asset('assets/img/purchase.png') }}" alt="Mes commandes"><br/>
+                <img src={{ asset('assets/img/purchase.png') }} alt="Mes commandes"><br/>
                 <a href="{{ path('account_order') }}">Mes commandes</a>
             </div>
         </div>
     </div>
     <hr>
 {% endblock %}
+{% include "footer.html.twig" %}
 

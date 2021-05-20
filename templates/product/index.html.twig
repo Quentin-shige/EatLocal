@@ -20,9 +20,9 @@
                 <div class="card-body">
                   <h5 class="card-title">{{product.name}}</h5>
                   <p class="card-text">{{product.description|u.truncate(120, '...')}}</p>
-                  <span>{{ (product.price /100)|number_format(2, ',', '.')}} €</span><br>
-                  <a href="{{path('product', { 'slug' : product.slug })}}" class="btn btn-info">Voir le produit</a>
-                  <a href="{{ path('add_to_cart', { 'id' : product.id }) }}" class="btn btn-primary">Ajouter au panier</a>
+                  <span>{{ (product.price /100)|number_format(2, ',', '.')}} €</span><br><br>
+                  <a href="{{path('product', { 'slug' : product.slug })}}" class="btn-green-primary">Voir le produit</a>
+                  <a href="{{ path('add_to_cart', { 'id' : product.id }) }}" class="btn-orange-primary">Ajouter au panier</a>
                 </div>
               </div>
             </div>
